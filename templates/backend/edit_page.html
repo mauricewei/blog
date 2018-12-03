@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meat charset="UTF-8">
+    <title>Edit Page</title>
+</head>
+<body>
+<form action="{% url 'blog:edit_action' %}" method="post"> 
+    {% csrf_token %}
+    {% if article %}
+        <input name="article_id" type="hidden" value="{{ article.id }}">
+        <lable>文章标题
+            <input name="title" type="text" value="{{ article.title }}">
+            <br/>
+        </lable>
+        </lable>文章内容
+            <input name="content" type="text" value="{{ article.content }}">
+        </lable>
+        <br/>
+    {% else %}
+        <input name="article_id" type="hidden" value="0">
+        <lable>文章标题
+            <input name="title" type="text">
+            <br/>
+        </lable>
+        </lable>文章内容
+            <input name="content" type="text">
+        </lable>
+        <br/>
+    {% endif %}
+    <input type="submit">
+</body>
+</html>
